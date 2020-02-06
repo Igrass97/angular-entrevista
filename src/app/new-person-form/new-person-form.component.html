@@ -1,0 +1,46 @@
+<section class="add-new">
+    <h1 class="add-new__title">AGENDA</h1>
+    <form class="add-new__form" [formGroup]="newPersonForm" (ngSubmit)="onFormSubmit()">
+        <div class="add-new__form-group">
+            <input class="add-new__form-field" placeholder="Nombre" type="text" formControlName="firstName">
+            <div *ngIf="submitted && firstName.errors?.required" class="validation-error">
+                Required
+            </div>
+            <div *ngIf="submitted && firstName.errors?.pattern && !firstName.errors?.required" class="validation-error">
+                Can only contain letters
+            </div>
+        </div>
+        <div class="add-new__form-group">
+            <input class="add-new__form-field" placeholder="Apellido" type="text" formControlName="lastName">
+            <div *ngIf="submitted && lastName.errors?.required" class="validation-error">
+                Required
+            </div>
+            <div *ngIf="submitted && lastName.errors?.pattern && !lastName.errors?.required" class="validation-error">
+                Can only contain letters
+            </div>
+        </div>
+        <div class="add-new__form-group">
+            <input class="add-new__form-field" placeholder="Edad" type="number" formControlName="age">
+            <div *ngIf="submitted && age.invalid" class="validation-error">
+                Required
+            </div>
+        </div>
+        <div class="add-new__form-group">
+            <input class="add-new__form-field" placeholder="Email" type="email" formControlName="email">
+            <div *ngIf="submitted &&  email.errors?.required" class="validation-error">
+                Required
+            </div>
+            <div *ngIf="submitted && !email.errors?.required && email.errors?.email" class="validation-error">
+                Email format must match: you@example.com
+            </div>
+        </div>
+        <div class="add-new__form-group">
+            <input class="add-new__form-field" placeholder="Phone" type="number" formControlName="phone">
+            <div *ngIf="submitted && phone.invalid" class="validation-error">
+                Required
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary add-new__save-button">GUARDAR PERSONA</button>
+    </form>
+</section>
